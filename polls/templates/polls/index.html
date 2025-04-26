@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+
+<body>
+    {% if latest_question_list %}
+    <h1>
+        <bold>Enquetes</bold>
+    </h1>
+    <div>
+        <ul>
+            <br>
+            {% for question in latest_question_list %}
+            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a><br><br></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No polls are available</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
